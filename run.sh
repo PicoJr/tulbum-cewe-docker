@@ -9,6 +9,6 @@ docker run -i -t --rm --name tualbum -e DISPLAY=unix$DISPLAY \
     -v /dev/shm:/dev/shm \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     --volume /mnt/Fotos:/data/Fotos:ro \
-    --volume /mnt/tualbum-cewe:/mnt/tualbum-cewe \
+    --volume /mnt/tualbum-cewe:/data/tualbum-cewe \
     --entrypoint="/home/tualbum/CEWE Photoworld" tualbum
 

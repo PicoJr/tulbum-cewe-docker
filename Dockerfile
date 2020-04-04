@@ -53,6 +53,3 @@ WORKDIR $HOME
 
 #RUN perl install.pl
 RUN sh -c '/bin/echo -ne "/home/tualbum" | perl install.pl'
-
-
-ENTRYPOINT ["/home/tualbum/tualbum"]
