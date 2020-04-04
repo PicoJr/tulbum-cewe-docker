@@ -1,7 +1,34 @@
 # tulbum-cewe-docker
-Docker container to make a cewe photo album
 
-Hint: install.pl script has been modified not to open de EULA because 
-I couldn't accept the file at docker build
+Tested with version `6.4.7` YMMV.
 
-Improvement pending: download tgz file from official website
+## Quick Start
+
+Download installer from official website: <https://cewe-photoworld.com/creator-software/linux-download>.
+
+```
+git clone <this-repo>
+cd <repo>
+```
+
+Copy `install.pl`, `EULA.txt` next to the Dockerfile.
+
+Remove EULA agreement interactive question from script:
+
+```
+./remove_eula_from_script.sh
+```
+
+Build docker image:
+
+```
+docker build . -t tualbum
+```
+
+Edit `run.sh` volumes (see `--volumes` options)
+
+Start tulbum cewe docker container:
+
+```
+./run.bash
+```

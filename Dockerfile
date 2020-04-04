@@ -2,29 +2,31 @@ FROM ubuntu:18.04
 MAINTAINER rusodavid@gmail.com
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get dist-upgrade
-RUN apt-get update
-RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:ubuntu-x-swat/updates
-RUN apt-get -y dist-upgrade
-RUN apt-get install -y build-essential
-RUN apt-get install -y unzip
-RUN apt-get install -y less
-RUN apt-get install -y wget
-RUN apt-get install -y libgtk-3-0
-RUN apt-get install -y libcanberra-gtk3-module
-RUN apt-get install -y libgl1-mesa-dri 
-RUN apt-get install -y libgl1-mesa-glx 
-RUN cpan 
-RUN cpan File::Copy
-RUN apt-get install -y locales
-RUN apt-get -y update
+# RUN apt-get dist-upgrade
+RUN apt-get update \
+    && apt-get install -y software-properties-common \
+    && add-apt-repository ppa:ubuntu-x-swat/updates \
+    && apt-get -y dist-upgrade \
+    && apt-get install -y build-essential \
+    && apt-get install -y unzip \
+    && apt-get install -y less \
+    && apt-get install -y wget \
+    && apt-get install -y libgtk-3-0 \
+    && apt-get install -y libcanberra-gtk3-module \
+    && apt-get install -y libgl1-mesa-dri  \
+    && apt-get install -y libgl1-mesa-glx  \
+    && apt-get install -y libnss3 \
+    && cpan  \
+    && cpan File::Copy \
+    && apt-get install -y locales \
+    && apt-get -y update
+
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 #ENV LC_ALL en_US.UTF-8
-RUN locale-gen en_US en_US.UTF-8
-RUN dpkg-reconfigure locales
-RUN apt-get install -y xdg*
+RUN locale-gen en_US en_US.UTF-8 \
+    && dpkg-reconfigure locales \
+    && apt-get install -y xdg*
 
 # Set up the user
 ARG UNAME=tualbum
@@ -50,7 +52,7 @@ USER ${UNAME}
 WORKDIR $HOME
 
 #RUN perl install.pl
-RUN sh -c '/bin/echo -ne “\\sí\\\” | perl install.pl'
+RUN sh -c '/bin/echo -ne "/home/tualbum" | perl install.pl'
 
 
-ENTRYPOINT ["/home/tualbum/CEWE/Taller CEWE/Taller CEWE"]
+ENTRYPOINT ["/home/tualbum/tualbum"]
